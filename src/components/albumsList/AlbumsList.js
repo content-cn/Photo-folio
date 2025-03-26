@@ -7,11 +7,8 @@ import Spinner from "react-spinner-material";
 import {
   collection,
   getDocs,
-  addDoc,
-  Timestamp,
   query,
   orderBy,
- 
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
