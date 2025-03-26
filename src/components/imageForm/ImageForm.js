@@ -35,7 +35,7 @@ export const ImageForm = ({
     if (updateIntent) {
       handleDefaultValues();
     }
-  }, [updateIntent]);
+  }, [updateIntent,handleDefaultValues ]);
 
   return (
     <div className={styles.imageForm}>

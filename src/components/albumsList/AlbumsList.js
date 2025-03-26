@@ -11,10 +11,10 @@ import {
   Timestamp,
   query,
   orderBy,
-  deleteDoc,
+ 
 } from "firebase/firestore";
 import { db } from "../../firebase";
-import { doc} from "firebase/firestore";
+
 // components imports
 import { AlbumForm } from "../albumForm/AlbumForm";
 import { ImagesList } from "../imagesList/ImagesList";

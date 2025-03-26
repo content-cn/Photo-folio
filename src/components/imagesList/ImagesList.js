@@ -52,7 +52,7 @@ export const ImagesList = ({ albumId, albumName, onBack }) => {
 
   useEffect(() => {
     getImages();
-  }, []);
+  }, [getImages]);
 
   const [addImageIntent, setAddImageIntent] = useState(false);
   const [imgLoading, setImgLoading] = useState(false);
