@@ -55,15 +55,20 @@ export const AlbumsList = () => {
   const handleAdd = async (name) => {
     if (albums.find((a) => a.name === name))
       return toast.error("Album name already in use.");
+  
     setAlbumAddLoading(true);
-    const albumRef = await addDoc(collection(db, "albums"), {
+  
+    // Create a temporary album (without adding to Firebase)
+    const tempAlbum = {
+      id: `temp-${Date.now()}`, // Unique temporary ID
       name,
-      created: Timestamp.now(),
-    });
-    console.log();
-    setAlbums((prev) => [{ id: albumRef.id, name }, ...prev]);
-    setAlbumAddLoading(false);
+    };
+  
+    // Add it to UI only
+    setAlbums((prev) => [tempAlbum, ...prev]);
+  
     toast.success("Album added successfully.");
+    setAlbumAddLoading(false);
   };
 
   const [createAlbumIntent, setCreateAlbumIntent] = useState(false);
