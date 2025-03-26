@@ -35,24 +35,17 @@ export const ImagesList = ({ albumId, albumName, onBack }) => {
   const searchInput = useRef();
 
   // async function
-  const getImages = async () => {
+  const getImages = useCallback(async () => {
     setLoading(true);
     const imagesRef = collection(db, "albums", albumId, "images");
-    const imagesSnapshot = await getDocs(
-      query(imagesRef, orderBy("created", "desc"))
-    );
+    const imagesSnapshot = await getDocs(query(imagesRef, orderBy("created", "desc")));
     const imagesData = imagesSnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
     setImages(imagesData);
-    IMAGES = imagesData;
     setLoading(false);
-  };
-
-  useEffect(() => {
-    getImages();
-  }, [getImages]);
+  }, [albumId]);
 
   const [addImageIntent, setAddImageIntent] = useState(false);
   const [imgLoading, setImgLoading] = useState(false);

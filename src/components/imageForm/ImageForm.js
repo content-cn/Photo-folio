@@ -26,16 +26,19 @@ export const ImageForm = ({
     imageUrlInput.current.value = "";
   };
 
-  const handleDefaultValues = () => {
+
+
+ // Memoize handleDefaultValues
+ const handleDefaultValues = useCallback(() => {
+  if (updateIntent) {
     imageTitleInput.current.value = updateIntent.title;
     imageUrlInput.current.value = updateIntent.url;
-  };
+  }
+}, [updateIntent]);
 
-  useEffect(() => {
-    if (updateIntent) {
-      handleDefaultValues();
-    }
-  }, [updateIntent,handleDefaultValues ]);
+useEffect(() => {
+  handleDefaultValues();
+}, [handleDefaultValues]);
 
   return (
     <div className={styles.imageForm}>
