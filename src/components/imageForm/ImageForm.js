@@ -1,5 +1,5 @@
 import styles from "./imageForm.module.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 
 export const ImageForm = ({
   updateIntent,
